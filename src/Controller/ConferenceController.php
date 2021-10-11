@@ -21,6 +21,7 @@ class ConferenceController extends AbstractController
     #[Route('/conference/{id}', name: 'show')]
     public function show(Conference $conference)
     {
+        //coms
         dump($conference);
         die;
         return $this->render('conference/show.html.twig', [
