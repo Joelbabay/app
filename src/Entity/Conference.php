@@ -44,6 +44,11 @@ class Conference
         $this->comments = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->city . ' ' . $this->year;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,7 +111,7 @@ class Conference
     public function removeComment(Comment $comment): self
     {
         if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
+            // set the owning side to null (unless already changed)&
             if ($comment->getConference() === $this) {
                 $comment->setConference(null);
             }

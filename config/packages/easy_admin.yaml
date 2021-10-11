@@ -1,0 +1,6 @@
+easy_admin:
+    entities:
+      Conference:
+          class: App\Entity\Conference
+      Comment:
+          class: App\Entity\Comment
