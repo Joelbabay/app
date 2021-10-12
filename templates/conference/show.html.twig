@@ -1,8 +1,43 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-	<p>
-		c'est mon paragraphe
-		{{ conference.city }}
-	</p>
+	<h2>{{ conference }}
+		Conference</h2>
+
+	{% if comments|length > 0 %}
+		<div>
+			There are
+			{{ comments | length }}
+			comments.
+		</div>
+		{% for comment in comments %}
+			{% if comment.photoFilename %}
+				<img src="{{ comment.photoFilename }}" alt="photo"/>
+			{% endif %}
+
+			<h4>
+				{{ comment.Author }}
+			</h4>
+			<small>
+				{{ comment.createdAt|format_datetime('medium', 'short') }}
+			</small>
+
+			<p>
+				{{comment.text}}
+			</p>
+		{% endfor %}
+		{% if previous >= 0  %}
+			<a href="{{ path('show_conference', {id: conference.id, offset: previous}) }}">
+				Previous
+			</a>
+		{% endif %}
+		{% if next < comments| length %}
+			<a href="{{path('show_conference', {id: conference.id, offset: next})}}">
+				Next
+			</a>
+		{% endif %}
+	{% else %}
+		<div>No comments for the moments</div>
+
+	{% endif %}
 {% endblock %}

@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
                     ->setText($faker->words(20, true))
                     ->setEmail($faker->email)
                     ->setCreatedAt($di)
-                    ->setPhotoFilename($faker->imageUrl(1000, 350))
+                    ->setPhotoFilename($faker->imageUrl(200, 200))
                     ->setConference($conference);
                 $manager->persist($comment);
             }
